@@ -24,8 +24,8 @@ int main() {
     // constants
     const double PROGRAM_VERSION = 1.0;
     const int OVERTIME_BUFFER_MINUTES = 35;
-    const int DAY_PAY = 80; // enter day pay
-    const int OVERTIME_PAY_RATE = 10; // enter overtime hourly rate
+    const int DAY_PAY = 130; // enter day pay
+    const int OVERTIME_PAY_RATE = 20; // enter overtime hourly rate
 
     // sums
     int total_sum = 0;
@@ -136,7 +136,7 @@ int main() {
         printf("Of which, buffered sum: %d\n", buffered_turn_over_hours);
         printf("Days worked: %d\n", days_worked);
         printf("-----------------------\n");
-        printf("Basic pay sum: %d\n", days_worked * DAY_PAY);
+        printf("Day pay sum: %d\n", days_worked * DAY_PAY);
         printf("Overtime sum: %d\n", overtime_sum);
         printf("Turn-over sum: %d\n", turn_over_sum);
         printf("Total sum: %d\n", total_sum);
@@ -234,8 +234,8 @@ bool calculate_turnover(const bool *is_turn_over, const int *over_pay_rate, cons
         //printf("Turn over Minute Diff: %d\n", *turnoverMinuteDiff);
         if (*turn_over_minute_diff - *overtime_buffer_m > 0) {
             //printf("Turn-over buffer surpassed!\n");
-            turn_over_hour_diff++;
-            buffered_turn_over_hours++;
+            ++*turn_over_hour_diff;
+            ++*buffered_turn_over_hours;
         }
         // turn over pay calculation
         *day_turn_over_pay = 0;
